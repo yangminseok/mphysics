@@ -30,8 +30,3 @@ object::~object()
 {
 
 }
-
-bool object::makeParticles(float rad)
-{
-
-}

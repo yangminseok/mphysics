@@ -12,7 +12,7 @@ public:
 	cube(const cube& _cube);
 	~cube();
 
-	virtual VEC3F_PTR makeParticles(float rad);
+	virtual unsigned int makeParticles(float rad, bool isOnlyCount, VEC3F_PTR pos = NULL);
 
 	bool define(vector3<float>& min, vector3<float>& max);
 	vector3<float> min_point() { return min_p; }

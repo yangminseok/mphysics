@@ -81,19 +81,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\collision.cpp" />
     <ClCompile Include="source\cube.cpp" />
+    <ClCompile Include="source\dem_simulation.cpp" />
+    <ClCompile Include="source\grid_base.cpp" />
     <ClCompile Include="source\modeler.cpp" />
+    <ClCompile Include="source\neighborhood_cell.cpp" />
     <ClCompile Include="source\object.cpp" />
     <ClCompile Include="source\particle_system.cpp" />
     <ClCompile Include="source\plane.cpp" />
+    <ClCompile Include="source\simulation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\collision.h" />
     <ClInclude Include="include\cube.h" />
     <ClInclude Include="include\dem_simulation.h" />
+    <ClInclude Include="include\grid_base.h" />
     <ClInclude Include="include\modeler.h" />
     <ClInclude Include="include\mphysics.h" />
     <ClInclude Include="include\mphysics_numeric.h" />
     <ClInclude Include="include\mphysics_types.h" />
+    <ClInclude Include="include\neighborhood_cell.h" />
     <ClInclude Include="include\object.h" />
     <ClInclude Include="include\particle_system.h" />
     <ClInclude Include="include\plane.h" />

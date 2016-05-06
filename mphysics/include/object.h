@@ -14,9 +14,9 @@ public:
 	object(){}
 	object(std::string &_name, tObject _tobj, tMaterial _mat, tRoll _roll);
 	object(const object& obj);
-	~object();
+	virtual ~object();
 
-	virtual VEC3F_PTR makeParticles(float rad) = 0;
+	virtual unsigned int makeParticles(float rad, bool isOnlyCount, VEC3F_PTR pos = NULL) = 0;
 
 	unsigned int ID() { return id; }
 	//virtual void saveResult(std::fstream& of) = 0;

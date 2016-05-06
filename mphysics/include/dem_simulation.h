@@ -7,7 +7,10 @@ class dem_simulation : public simulation
 {
 public:
 	dem_simulation();
+	dem_simulation(modeler *_md, grid_base* _cb);
 	~dem_simulation();
+
+	virtual bool initilize();
 };
 
 #endif

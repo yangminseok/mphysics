@@ -6,12 +6,13 @@
 #include <string>
 
 class object;
+class modeler;
 
 class particle_system
 {
 public:
 	particle_system();
-	particle_system(std::string _name);
+	particle_system(std::string _name, modeler *_md);
 	~particle_system();
 
 	void clear();
@@ -25,11 +26,16 @@ public:
 	float* mass() { return ms; }
 	float* inertia() { return iner; }
 	float* radius() { return rad; }
+	float maxRadius() { return max_r; }
 
 	bool makeParticles(object *obj, float _rad);
+	void allocMemory(unsigned int _np);
+	unsigned int numParticle() { return np; }
 
 private:
 	std::string name;
+	unsigned int np;
+	float max_r;				// max radius
 
 	VEC3F_PTR pos = NULL;
 	VEC3F_PTR vel = NULL;
@@ -41,6 +47,12 @@ private:
 	float* ms = NULL;
 	float* iner = NULL;
 	float* rad = NULL;
+
+	float rho;
+	float E;
+	float pr;
+
+	modeler *md;
 };
 
 #endif

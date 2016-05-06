@@ -39,6 +39,21 @@
     <ClCompile Include="source\object.cpp">
       <Filter>소스 파일\object</Filter>
     </ClCompile>
+    <ClCompile Include="source\collision.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\neighborhood_cell.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\grid_base.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\simulation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\dem_simulation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\simulation.h">
@@ -73,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="include\plane.h">
       <Filter>헤더 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\neighborhood_cell.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\grid_base.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

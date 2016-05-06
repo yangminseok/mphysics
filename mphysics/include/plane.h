@@ -11,7 +11,7 @@ public:
 	plane(const plane& _plane);
 	~plane();
 
-	virtual VEC3F_PTR makeParticles(float _rad);
+	virtual unsigned int makeParticles(float _rad, bool isOnlyCount, VEC3F_PTR pos = NULL) {}
 
 	bool define(vector3<float>& _xw, vector3<float>& _pa, vector3<float>& _pb);
 	float L1() const { return l1; }
