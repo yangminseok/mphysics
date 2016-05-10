@@ -52,13 +52,15 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\mphysics\mphysics\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\mphysics\mphysics\include;$(CUDA_PATH_V7_5)\include;C:\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libboost_system-vc120-mt-gd-1_60.lib;libboost_chrono-vc120-mt-gd-1_60.lib;libboost_timer-vc120-mt-gd-1_60.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\mphysics\mphysics\lib;C:\boost\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,21 +84,28 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\collision.cpp" />
+    <ClCompile Include="source\collision_particles_particles.cpp" />
+    <ClCompile Include="source\collision_particles_plane.cpp" />
     <ClCompile Include="source\cube.cpp" />
     <ClCompile Include="source\dem_simulation.cpp" />
     <ClCompile Include="source\grid_base.cpp" />
+    <ClCompile Include="source\integrator.cpp" />
     <ClCompile Include="source\modeler.cpp" />
     <ClCompile Include="source\neighborhood_cell.cpp" />
     <ClCompile Include="source\object.cpp" />
     <ClCompile Include="source\particle_system.cpp" />
     <ClCompile Include="source\plane.cpp" />
     <ClCompile Include="source\simulation.cpp" />
+    <ClCompile Include="source\velocity_verlet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\collision.h" />
+    <ClInclude Include="include\collision_particles_particles.h" />
+    <ClInclude Include="include\collision_particles_plane.h" />
     <ClInclude Include="include\cube.h" />
     <ClInclude Include="include\dem_simulation.h" />
     <ClInclude Include="include\grid_base.h" />
+    <ClInclude Include="include\integrator.h" />
     <ClInclude Include="include\modeler.h" />
     <ClInclude Include="include\mphysics.h" />
     <ClInclude Include="include\mphysics_numeric.h" />
@@ -107,6 +116,7 @@
     <ClInclude Include="include\plane.h" />
     <ClInclude Include="include\simulation.h" />
     <ClInclude Include="include\vector3.hpp" />
+    <ClInclude Include="include\velocity_verlet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

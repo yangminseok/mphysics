@@ -29,6 +29,12 @@ enum tMaterial { USER_INPUT = -1, NO_MATERIAL = 0, STEEL = 1, MEDIUM_CLAY = 2, P
 enum tRoll{ ROLL_BOUNDARY = 0, ROLL_PARTICLE, ROLL_MOVING };
 enum tObject{ CUBE = 0, PLANE, PARTICLES };
 enum tSimulation{ DEM, SPH, MBD };
+enum tCollisionPair{ PARTICLES_PARTICLES, PARTICLES_PLANE };
+
+typedef struct
+{
+	float kn, vn, ks, vs, mu;
+}constant;
 
 namespace material
 {

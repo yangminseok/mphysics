@@ -19,6 +19,12 @@
     <Filter Include="소스 파일\object">
       <UniqueIdentifier>{cffc872f-03f2-4452-8966-64bf30ff654b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\collision">
+      <UniqueIdentifier>{de34645d-cd87-40f9-877f-8c4d96f7fa97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\collision">
+      <UniqueIdentifier>{4e1294b1-cfbf-4e16-a72d-d3bbf85d1571}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +59,18 @@
     </ClCompile>
     <ClCompile Include="source\dem_simulation.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\integrator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\velocity_verlet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\collision_particles_plane.cpp">
+      <Filter>소스 파일\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="source\collision_particles_particles.cpp">
+      <Filter>소스 파일\collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +115,18 @@
     </ClInclude>
     <ClInclude Include="include\grid_base.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\integrator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\velocity_verlet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision_particles_plane.h">
+      <Filter>헤더 파일\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision_particles_particles.h">
+      <Filter>헤더 파일\collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

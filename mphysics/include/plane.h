@@ -7,13 +7,15 @@ class plane : public object
 {
 public:
 	plane(){}
-	plane(std::string _name, tMaterial _mat, tRoll _roll);
+	plane(modeler *_md, std::string _name, tMaterial _mat, tRoll _roll);
 	plane(const plane& _plane);
 	~plane();
 
-	virtual unsigned int makeParticles(float _rad, bool isOnlyCount, VEC3F_PTR pos = NULL) {}
+	virtual unsigned int makeParticles(float _rad, bool isOnlyCount, VEC3F_PTR pos = NULL);
 
-	bool define(vector3<float>& _xw, vector3<float>& _pa, vector3<float>& _pb);
+	void save_shape_data();
+
+	bool define(vector3<float>& _xw, vector3<float>& _pa, vector3<float>& _pb, bool isSave = true);
 	float L1() const { return l1; }
 	float L2() const { return l2; }
 	vector3<float> U1() const { return u1; }

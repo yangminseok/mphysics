@@ -6,13 +6,13 @@
 #include <fstream>
 #include <string>
 
-//class simulation;
+class modeler;
 
 class object
 {
 public:
 	object(){}
-	object(std::string &_name, tObject _tobj, tMaterial _mat, tRoll _roll);
+	object(modeler *_md, std::string &_name, tObject _tobj, tMaterial _mat, tRoll _roll);
 	object(const object& obj);
 	virtual ~object();
 
@@ -29,8 +29,12 @@ public:
 	float youngs() const { return y; }
 	float poisson() const { return p; }
 
+	//static void close_stream() { io_object.close(); }
+
 protected:
 	static unsigned int id;
+
+	//static std::ofstream io_object;
 
 	std::string name;
 	tRoll roll_type;
@@ -40,6 +44,7 @@ protected:
 	float y;
 	float p;
 	//simulation *sim;
+	modeler* md;
 };
 
 #endif

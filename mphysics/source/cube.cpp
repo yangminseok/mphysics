@@ -1,7 +1,8 @@
 #include "cube.h"
+#include "modeler.h"
 
-cube::cube(std::string _name, tMaterial _mat, tRoll _roll)
-	: object(_name, CUBE, _mat, _roll)
+cube::cube(modeler* _md, std::string _name, tMaterial _mat, tRoll _roll)
+	: object(_md, _name, CUBE, _mat, _roll)
 {
 
 }
@@ -32,13 +33,14 @@ bool cube::define(vector3<float>& min, vector3<float>& max)
  	size.y = (max_p - vector3<float>(max_p.x, min_p.y, max_p.z)).length();
     size.z = (max_p - vector3<float>(max_p.x, max_p.y, min_p.z)).length();
 
-	planes[0].define(min_p, min_p + vector3<float>(0, 0, size(2)), min_p + vector3<float>(size(0), 0, 0));
-	planes[1].define(min_p, min_p + vector3<float>(0, size(1), 0), min_p + vector3<float>(0, 0, size(2)));
-	planes[2].define(min_p + vector3<float>(size(0), 0, 0), min_p + vector3<float>(size(0), 0, size(2)), min_p + vector3<float>(size(0), size(1), 0));
-	planes[3].define(min_p, min_p + vector3<float>(size(0), 0, 0), min_p + vector3<float>(0, size(1), 0));
-	planes[4].define(min_p + vector3<float>(0, 0, size(2)), min_p + vector3<float>(0, size(1), size(2)), min_p + vector3<float>(size(0), 0, size(2)));
-	planes[5].define(min_p + vector3<float>(0, size(1), 0), min_p + vector3<float>(size(0), size(1), 0), min_p + vector3<float>(0, size(1), size(2)));
+	planes[0].define(min_p, min_p + vector3<float>(0, 0, size.z), min_p + vector3<float>(size.x, 0, 0), false);
+	planes[1].define(min_p, min_p + vector3<float>(0, size.y, 0), min_p + vector3<float>(0, 0, size.z), false);
+	planes[2].define(min_p + vector3<float>(size.x, 0, 0), min_p + vector3<float>(size.x, 0, size.z), min_p + vector3<float>(size.x, size.y, 0), false);
+	planes[3].define(min_p, min_p + vector3<float>(size.x, 0, 0), min_p + vector3<float>(0, size.y, 0), false);
+	planes[4].define(min_p + vector3<float>(0, 0, size.z), min_p + vector3<float>(0, size.y, size.z), min_p + vector3<float>(size.x, 0, size.z), false);
+	planes[5].define(min_p + vector3<float>(0, size.y, 0), min_p + vector3<float>(size.x, size.y, 0), min_p + vector3<float>(0, size.y, size.z), false);
 
+	save_shape_data();
 	return true;
 }
 
@@ -52,12 +54,11 @@ unsigned int cube::makeParticles(float rad, bool isOnlyCount, VEC3F_PTR pos)
 	float spacing = rad * 2.1f;
 	unsigned int np = dim3np.x * dim3np.y * dim3np.z;
 	if (!np)
-		return NULL;
+		return 0;
 	if (isOnlyCount)
-		return;
+		return np;
 	srand(1976);
 	float jitter = rad * 0.0001f;
-	VEC3F_PTR pos = new VEC3F[np];
 	unsigned int cnt = 0;
 	for (unsigned int z = 0; z < dim3np.z; z++){
 		for (unsigned int y = 0; y < dim3np.y; y++){
@@ -73,4 +74,13 @@ unsigned int cube::makeParticles(float rad, bool isOnlyCount, VEC3F_PTR pos)
 		}
 	}
 	return np;
+}
+
+void cube::save_shape_data()
+{
+	md->modelStream() << "OBJECT CUBE " << name << " " << roll_type << " " << mat_type << std::endl
+		<< min_p.x << " " << min_p.y << " " << min_p.z << std::endl
+		<< max_p.x << " " << max_p.y << " " << max_p.z << std::endl;
+
+
 }

@@ -7,10 +7,14 @@ class neighborhood_cell : public grid_base
 {
 public:
 	neighborhood_cell();
-	neighborhood_cell(std::string _name);
+	neighborhood_cell(std::string _name, modeler* _md);
 	~neighborhood_cell();
 
 	virtual void detection();
+
+private:
+	
+	void reorderDataAndFindCellStart(unsigned int id, unsigned int begin, unsigned int end);
 };
 
 #endif

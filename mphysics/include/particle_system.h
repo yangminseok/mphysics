@@ -4,9 +4,11 @@
 #include "mphysics_numeric.h"
 #include <iostream>
 #include <string>
+#include <list>
 
 class object;
 class modeler;
+class collision;
 
 class particle_system
 {
@@ -28,9 +30,17 @@ public:
 	float* radius() { return rad; }
 	float maxRadius() { return max_r; }
 
+	float density() { return rho; }
+	float youngs() { return E; }
+	float poisson() { return pr; }
+
 	bool makeParticles(object *obj, float _rad);
+	void setCollision(float _rest, float _sratio, float _fric);
+	void addCollision(collision* c) { cs.push_back(c); }
 	void allocMemory(unsigned int _np);
 	unsigned int numParticle() { return np; }
+
+	bool particleCollision(float dt);
 
 private:
 	std::string name;
@@ -52,6 +62,12 @@ private:
 	float E;
 	float pr;
 
+	float rest;
+	float sratio;
+	float fric;
+
+	collision *c_p2p;
+	std::list<collision*> cs;
 	modeler *md;
 };
 

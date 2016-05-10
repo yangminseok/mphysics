@@ -1,0 +1,8 @@
+OBJECT CUBE pCube 1 3
+-0.1 0.1 -0.1
+0.1 0.3 0.1
+OBJECT RECTANGLE bPlane 0 5
+-1 0 1
+1 0 1
+1 0 -1
+-1 0 -1

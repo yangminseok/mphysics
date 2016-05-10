@@ -8,11 +8,13 @@ class cube : public object
 {
 public:
 	cube(){}
-	cube(std::string _name, tMaterial _mat, tRoll _roll);
+	cube(modeler* _md, std::string _name, tMaterial _mat, tRoll _roll);
 	cube(const cube& _cube);
 	~cube();
 
 	virtual unsigned int makeParticles(float rad, bool isOnlyCount, VEC3F_PTR pos = NULL);
+
+	void save_shape_data();
 
 	bool define(vector3<float>& min, vector3<float>& max);
 	vector3<float> min_point() { return min_p; }

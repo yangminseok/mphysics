@@ -32,7 +32,7 @@ public:
 	bool operator== (vector3& v3) { return (x == v3.x) && (y == v3.y) && (z == v3.z); }
 	void operator*= (T val) { x *= val; y *= val; z *= val; }
 	template< typename T1 >
-	vector3 operator *(T1 val) { return vector3(val * x, val * y, val * z); }
+	//vector3 operator *(T1 val) { return vector3(val * x, val * y, val * z); }
 
 	T& operator() (unsigned id){ return *((&x) + id); }
 
@@ -47,6 +47,22 @@ public:
 	T x, y, z;
 };
 
+inline
+vector3<double> operator* (double sv, vector3<double> vv){
+	return vector3<double>(sv * vv.x, sv * vv.y, sv * vv.z);
+}
+inline
+vector3<float> operator* (float sv, vector3<float> vv){
+	return vector3<float>(sv * vv.x, sv * vv.y, sv * vv.z);
+}
+inline
+vector3<int> operator* (int sv, vector3<int> vv){
+	return vector3<int>(sv * vv.x, sv * vv.y, sv * vv.z);
+}
+inline
+vector3<float> operator* (int sv, vector3<float> vv){
+	return vector3<float>(sv * vv.x, sv * vv.y, sv * vv.z);
+}
 template< typename T >
 std::ostream& operator<<(std::ostream& os, vector3<T>& v)
 {
